@@ -429,21 +429,63 @@ public class TelaPrincipal extends JFrame {
             selecao.add(check);
         }
 
-        JPanel campos = new JPanel(
-            new GridLayout(0, 2, 5, 5)
-        );
+        JScrollPane rolagem = new JScrollPane(selecao);
 
-        campos.add(new JLabel("Descrição:"));
-        campos.add(descricao);
+        rolagem.setPreferredSize(new Dimension(300, 150));
 
-        campos.add(new JLabel("Valor:"));
-        campos.add(valor);
+        rolagem.getVerticalScrollBar().setUnitIncrement(16);
 
-        campos.add(new JLabel("Tipo:"));
-        campos.add(tipo);
+        JPanel campos = new JPanel(new GridBagLayout());
 
-        campos.add(new JLabel("Participantes:"));
-        campos.add(new JScrollPane(selecao));
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        gbc.insets = new Insets(4, 4, 4, 4);
+
+        gbc.anchor = GridBagConstraints.NORTHWEST;
+
+        gbc.gridy = 0;
+        gbc.gridx = 0;
+        gbc.weightx = 0;
+        gbc.fill = GridBagConstraints.NONE;
+        campos.add(new JLabel("Descrição:"), gbc);
+
+        gbc.gridx = 1;
+        gbc.weightx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        campos.add(descricao, gbc);
+
+        gbc.gridy = 1;
+        gbc.gridx = 0;
+        gbc.weightx = 0;
+        gbc.fill = GridBagConstraints.NONE;
+        campos.add(new JLabel("Valor:"), gbc);
+
+        gbc.gridx = 1;
+        gbc.weightx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        campos.add(valor, gbc);
+
+        gbc.gridy = 2;
+        gbc.gridx = 0;
+        gbc.weightx = 0;
+        gbc.fill = GridBagConstraints.NONE;
+        campos.add(new JLabel("Tipo:"), gbc);
+
+        gbc.gridx = 1;
+        gbc.weightx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        campos.add(tipo, gbc);
+
+        gbc.gridy = 3;
+        gbc.gridx = 0;
+        gbc.weightx = 0;
+        gbc.fill = GridBagConstraints.NONE;
+        campos.add(new JLabel("Participantes:"), gbc);
+
+        gbc.gridx = 1;
+        gbc.weightx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        campos.add(rolagem, gbc);
 
         int resposta = JOptionPane.showConfirmDialog(
             this,
